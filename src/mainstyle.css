@@ -6,11 +6,17 @@
   font-family: "Oswald", sans-serif;
 }
 body {
-  background-color: #8f8f8f;
+  background-image: url("./img/frame-snake-white-background-illustration-57035208.jpg");
+  background-size: cover;
+  background-repeat: repeat;
   height: 100%;
+  
+  overflow: hidden;
+
 }
 .wrapper {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   height: 100%;
@@ -27,6 +33,9 @@ body {
   clip-path: circle(75%);
 }
 .menu-btn {
+   display: flex;
+  justify-content: center;
+  align-items: center; 
   position: absolute;
   z-index: 2;
   right: 20px;
@@ -43,7 +52,8 @@ body {
   /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
   /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
-  background: #000;
+  background: #000000;
+  border: solid rgb(0, 0, 0) 5px;
   transition: all 0.3s ease-in-out;
 }
 #active:checked ~ .menu-btn {
@@ -51,6 +61,8 @@ body {
 }
 #active:checked ~ .menu-btn i:before {
   content: "\f00d";
+
+
 }
 .wrapper ul {
   position: absolute;
@@ -85,12 +97,12 @@ body {
   width: 104%;
   height: 110%;
   left: -2%;
-  top: -5%; /* if the font is 'Oswald'*/
+ top: -5%;  /* if the font is 'Oswald'*/
   border-radius: 50px;
   transform: scaleY(0);
   z-index: -1;
   animation: rotate 1.5s linear infinite;
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
 }
 .wrapper ul li a:hover:after {
   transform: scaleY(1);
@@ -100,26 +112,171 @@ body {
 }
 input[type="checkbox"] {
   display: none;
- 
+
 }
 .content {
- 
+ background-color: #888;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
   text-align: center;
-  width: 100%;
+  width: auto;
   color: #202020;
-  width: 100%;
+  padding: 35px;
   overflow: hidden;
+  border: 1px  #a8a8a8 ;
+  border-style: inset;
+  border-radius: 50px 10px 50px 10px;
+  box-shadow: rgba(40, 40, 48, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(27, 29, 31, 0.35) 0px -2px 6px 0px inset;
+
 }
 canvas {
 
-  background-color: rgb(255, 251, 245);
-  border: red solid 3px;
+  background-color: rgb(158, 255, 179);
+  border: rgb(0, 0, 0) solid 2px;
+  margin-bottom: 50px;
+}
 
+.btn-region {
+ border: none;
+}
+
+
+/* Switch starts here */
+.rocker {
+  display: inline-block;
+  position:relative;
+  margin-bottom: 20px;
+  font-size: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  width: 7em;
+  height: 4em;
+  overflow: hidden;
+  border-bottom: 0.5em solid #888;
+}
+
+
+
+.rocker::before {
+  content:"";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+  border: 0.5em solid #888;
+  border-bottom: 0;
+}
+
+.rocker input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-left,
+.switch-right {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 3em;
+  transition: 0.2s;
+}
+
+.switch-left {
+  height: 2.4em;
+  width: 2.75em;
+  left: 0.85em;
+  bottom: 0.4em;
+  background-color: #ddd;
+  transform: rotate(15deg) skewX(15deg);
+}
+
+.switch-right {
+  right: 0.5em;
+  bottom: 0;
+  background-color: #bd5757;
+  color: #fff;
+}
+
+.switch-left::before,
+.switch-right::before {
+  content: "";
+  position: absolute;
+  width: 0.4em;
+  height: 2.45em;
+  bottom: -0.45em;
+  background-color: #ccc;
+  transform: skewY(-65deg);
+}
+
+.switch-left::before {
+  left: -0.4em;
+}
+
+.switch-right::before {
+  right: -0.375em;
+  background-color: transparent;
+  transform: skewY(65deg);
+}
+
+input:checked + .switch-left {
+  background-color: #71dd76;
+  color: #fff;
+  bottom: 0px;
+  left: 0.5em;
+  height: 2.5em;
+  width: 3em;
+  transform: rotate(0deg) skewX(0deg);
+}
+
+input:checked + .switch-left::before {
+  background-color: transparent;
+  width: 3.0833em;
+}
+
+input:checked + .switch-left + .switch-right {
+  background-color: #ddd;
+  color: #888;
+  bottom: 0.4em;
+  right: 0.8em;
+  height: 2.4em;
+  width: 2.75em;
+  transform: rotate(-15deg) skewX(-15deg);
+}
+
+input:checked + .switch-left + .switch-right::before {
+  background-color: #ccc;
+}
+
+/* Keyboard Users */
+input:focus + .switch-left {
+  color: #333;
+}
+
+input:checked:focus + .switch-left {
+  color: #fff;
+}
+
+input:focus + .switch-left + .switch-right {
+  color: #fff;
+}
+
+input:checked:focus + .switch-left + .switch-right {
+  color: #333;
 }
 
 
