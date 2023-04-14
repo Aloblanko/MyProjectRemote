@@ -39,7 +39,7 @@ function myFunction() {
         requestAnimationFrame(loop);
 
         // slow game loop to 15 fps instead of 60 (60/15 = 4)
-        if (++count < 7) {
+        if (++count < 5) {
             return;
         }
 

@@ -6,7 +6,7 @@
   font-family: "Oswald", sans-serif;
 }
 body {
-  background-image: url("./img/frame-snake-white-background-illustration-57035208.jpg");
+  background-image: url(".//img/the-matrix-tetris-movies-video-games-wallpaper-preview.jpg");
   background-size: cover;
   background-repeat: repeat;
   height: 100%;
@@ -53,7 +53,7 @@ body {
   /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
   background: #000000;
-  border: solid rgb(0, 0, 0) 5px;
+  border: solid rgb(65, 190, 71) 3px;
   transition: all 0.3s ease-in-out;
 }
 #active:checked ~ .menu-btn {
